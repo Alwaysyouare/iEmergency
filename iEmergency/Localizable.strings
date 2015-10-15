@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  iEmergency
+
+  Created by ICI on 15-7-28.
+  Copyright (c) 2015年 ICI. All rights reserved.
+*/
+
+//Main的字符串配置
+"Main_TabBarTitle_Home"="应急通";
+"Main_TabBarTitle_Map"="地图";
+"Main_TabBarTitle_More"="更多";
