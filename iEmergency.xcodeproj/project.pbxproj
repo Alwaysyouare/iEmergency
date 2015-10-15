@@ -274,6 +274,10 @@
 		1FE9F8141B8462DE0004BDA0 /* ICINewPushMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9F8131B8462DE0004BDA0 /* ICINewPushMessage.m */; };
 		1FE9F8171B8474F40004BDA0 /* ICIBindPushServerParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9F8161B8474F40004BDA0 /* ICIBindPushServerParam.m */; };
 		1FEF3C1E1B6B13A700A9FD29 /* ICICollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF3C1D1B6B13A700A9FD29 /* ICICollectionCell.xib */; };
+		B88A4A5C1BCFF345001BD528 /* Bugtags.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B88A4A5A1BCFF345001BD528 /* Bugtags.bundle */; settings = {ASSET_TAGS = (); }; };
+		B88A4A5D1BCFF345001BD528 /* Bugtags.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5B1BCFF345001BD528 /* Bugtags.framework */; settings = {ASSET_TAGS = (); }; };
+		B88A4A5F1BCFF381001BD528 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */; };
+		B88A4A611BCFF38C001BD528 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A601BCFF38C001BD528 /* ImageIO.framework */; };
 		B8A222D31BCF91B100FCF1E2 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A222D11BCF8E2800FCF1E2 /* BaiduMapAPI.framework */; };
 		B8A222D51BCF91C400FCF1E2 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8A222D41BCF91C400FCF1E2 /* mapapi.bundle */; settings = {ASSET_TAGS = (); }; };
 		B8A2D7401BCF3DF0004DA4EC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */; };
@@ -791,6 +795,10 @@
 		1FE9F8151B8474F40004BDA0 /* ICIBindPushServerParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICIBindPushServerParam.h; sourceTree = "<group>"; };
 		1FE9F8161B8474F40004BDA0 /* ICIBindPushServerParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICIBindPushServerParam.m; sourceTree = "<group>"; };
 		1FEF3C1D1B6B13A700A9FD29 /* ICICollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICICollectionCell.xib; sourceTree = "<group>"; };
+		B88A4A5A1BCFF345001BD528 /* Bugtags.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Bugtags.bundle; path = iEmergency/framework/CrashTrack/Bugtags.bundle; sourceTree = "<group>"; };
+		B88A4A5B1BCFF345001BD528 /* Bugtags.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugtags.framework; path = iEmergency/framework/CrashTrack/Bugtags.framework; sourceTree = "<group>"; };
+		B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B88A4A601BCFF38C001BD528 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		B8A222D11BCF8E2800FCF1E2 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = iEmergency/framework/BaiduMap/BaiduMapAPI.framework; sourceTree = "<group>"; };
 		B8A222D41BCF91C400FCF1E2 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = iEmergency/framework/BaiduMap/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 		B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -803,9 +811,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88A4A611BCFF38C001BD528 /* ImageIO.framework in Frameworks */,
+				B88A4A5F1BCFF381001BD528 /* AVFoundation.framework in Frameworks */,
 				B8A222D31BCF91B100FCF1E2 /* BaiduMapAPI.framework in Frameworks */,
 				B8A2D7461BCF3E3C004DA4EC /* libxml2.2.tbd in Frameworks */,
 				B8A2D7421BCF3E15004DA4EC /* libresolv.tbd in Frameworks */,
+				B88A4A5D1BCFF345001BD528 /* Bugtags.framework in Frameworks */,
 				B8A2D7401BCF3DF0004DA4EC /* libsqlite3.0.tbd in Frameworks */,
 				1FE9F80E1B842C0B0004BDA0 /* CFNetwork.framework in Frameworks */,
 				1FE9F80C1B842BF40004BDA0 /* CoreData.framework in Frameworks */,
@@ -1399,6 +1410,10 @@
 		1FE3214B1B65DBAB00944254 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B88A4A601BCFF38C001BD528 /* ImageIO.framework */,
+				B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */,
+				B88A4A5A1BCFF345001BD528 /* Bugtags.bundle */,
+				B88A4A5B1BCFF345001BD528 /* Bugtags.framework */,
 				B8A222D11BCF8E2800FCF1E2 /* BaiduMapAPI.framework */,
 				B8A2D7451BCF3E3C004DA4EC /* libxml2.2.tbd */,
 				B8A2D7411BCF3E15004DA4EC /* libresolv.tbd */,
@@ -2254,6 +2269,7 @@
 				1F06C7961B6A21CB004BAA78 /* image015.jpg in Resources */,
 				1FC0BDC61B674E91006C459B /* Localizable.strings in Resources */,
 				1F06C7971B6A21CB004BAA78 /* image016.jpg in Resources */,
+				B88A4A5C1BCFF345001BD528 /* Bugtags.bundle in Resources */,
 				1F06C7941B6A21CB004BAA78 /* image013.jpg in Resources */,
 				1FE9F7A41B842AAE0004BDA0 /* build-libidn.sh in Resources */,
 				1F06C7951B6A21CB004BAA78 /* image014.jpg in Resources */,
@@ -2642,6 +2658,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iEmergency/framework/BaiduMap",
+					"$(PROJECT_DIR)/iEmergency/framework/CrashTrack",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iEmergency/iEmergency-Prefix.pch";
@@ -2678,6 +2695,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iEmergency/framework/BaiduMap",
+					"$(PROJECT_DIR)/iEmergency/framework/CrashTrack",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iEmergency/iEmergency-Prefix.pch";

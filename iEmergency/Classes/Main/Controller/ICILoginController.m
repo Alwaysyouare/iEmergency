@@ -61,7 +61,11 @@
     // Pass the selected object to the new view controller.
 }
 
-
+/**
+ *  登录按钮事件
+ *
+ *  @param sender <#sender description#>
+ */
 - (IBAction)onLogin:(id)sender {
     
     NSString *accountText = _account.text;
