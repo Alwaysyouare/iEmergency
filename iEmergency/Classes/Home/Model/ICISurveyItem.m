@@ -10,11 +10,13 @@
 
 @implementation ICISurveyItem
 
-- (instancetype)initWithName:(NSString *)name value:(NSString *)value
+- (instancetype) initWithName:(NSString *)name key:(NSString *)key value:(NSString *)value nTag:(NSInteger)nTag
 {
     if (self = [super init]) {
         self.name = name;
         self.value = value;
+        self.key = key;
+        self.nTag = nTag;
     }
     return  self;
     

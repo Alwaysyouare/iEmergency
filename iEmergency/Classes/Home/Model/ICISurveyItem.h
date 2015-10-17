@@ -9,14 +9,27 @@
 #import <Foundation/Foundation.h>
 
 @interface ICISurveyItem : NSObject
+
 /**
  *  item的标题
  */
 @property (nonatomic,copy) NSString *name;
+
+/**
+ *  item对应的字段名称
+ */
+@property (nonatomic,copy) NSString *key;
+
 /**
  *  item的值。对应文本框的值
  */
 @property (nonatomic,copy) NSString *value;
+
+/**
+ *  value文本框对应的Tag值
+ */
+@property (nonatomic,assign) NSInteger nTag;
+
 /**
  *  初始化item
  *
@@ -25,5 +38,5 @@
  *
  *  @return item
  */
-- (instancetype)initWithName:(NSString *)name value:(NSString *)value;
+- (instancetype)initWithName:(NSString *)name key:(NSString *)key value:(NSString *)value nTag:(NSInteger)nTag;
 @end

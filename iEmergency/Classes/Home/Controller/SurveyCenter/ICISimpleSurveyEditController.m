@@ -12,7 +12,7 @@
 #import "ICISurveyCell.h"
 #import "ICISurveyFooterView.h"
 
-@interface ICISimpleSurveyEditController ()
+@interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate>
 
 /**
  *  字段列表
@@ -35,15 +35,15 @@
 {
     if (_items == nil) {
         //
-        ICISurveyItem *item00 = [[ICISurveyItem alloc] initWithName:@"位置" value:nil];
-        ICISurveyItem *item01 = [[ICISurveyItem alloc] initWithName:@"经度" value:nil];
-        ICISurveyItem *item02 = [[ICISurveyItem alloc] initWithName:@"纬度" value:nil];
-        ICISurveyItem *item03 = [[ICISurveyItem alloc] initWithName:@"调查人" value:nil];
+        ICISurveyItem *item00 = [[ICISurveyItem alloc] initWithName:@"位置" key:@"Geo" value:nil nTag:0];
+        ICISurveyItem *item01 = [[ICISurveyItem alloc] initWithName:@"经度" key:@"Lon" value:nil nTag:1];
+        ICISurveyItem *item02 = [[ICISurveyItem alloc] initWithName:@"纬度" key:@"Lat" value:nil nTag:2];
+        ICISurveyItem *item03 = [[ICISurveyItem alloc] initWithName:@"调查人" key:@"Reporter" value:nil nTag:3];
         ICIMoreGroup *group0 = [[ICIMoreGroup alloc] init];
         group0.headerTitle = @"基本信息";
         group0.items = @[item00,item01,item02,item03];
         
-        ICISurveyItem *item10 = [[ICISurveyItem alloc] initWithName:@"具体描述" value:nil];
+        ICISurveyItem *item10 = [[ICISurveyItem alloc] initWithName:@"具体描述" key:@"Description" value:nil nTag:4];
         ICIMoreGroup *group1 = [[ICIMoreGroup alloc] init];
         group1.headerTitle = @"信息描述";
         group1.items = @[item10];
@@ -86,14 +86,34 @@
 {
     [super viewDidLoad];
     
+    UITapGestureRecognizer * mytap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap_gestureRecognizer:)];
+    [self.view addGestureRecognizer:mytap];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"ICISurveyCell" bundle:nil] forCellReuseIdentifier:SurveyBasicCellID];
-    self.tableView.tableFooterView = [ICISurveyFooterView footerView];
+    ICISurveyFooterView *footView = [ICISurveyFooterView footerView];
+    footView.delegate = self;
+    self.tableView.tableFooterView = footView;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+}
+
+/**
+ *  使用手势来关闭键盘，因为UITableView不能接受touchesBegan消息
+ *
+ *  @param tap_gest <#tap_gest description#>
+ */
+-(void)tap_gestureRecognizer:(UITapGestureRecognizer *)tap_gest
+{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
 }
 
 
@@ -134,6 +154,7 @@
                                ];
         ICIMoreGroup *group = self.items[indexPath.section];
         cell.surveyItem = group.items[indexPath.row];
+        cell.value.delegate = self;
         return cell;
     }else{
         return nil;
@@ -195,6 +216,27 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)ICISurveyViewDidClickBtn:(ICISurveyFooterClickType)btnType
+{
+    switch (btnType) {
+        case FooterClickSave:
+            //
+            ICILog(@"点击了保存按钮");
+            break;
+        case FooterClickReport:
+            //
+            ICILog(@"点击了保存并上传按钮");
+            break;
+        case FooterClickCancel:
+            //
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 
 - (void)didReceiveMemoryWarning

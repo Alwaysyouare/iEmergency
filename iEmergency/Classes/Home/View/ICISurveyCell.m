@@ -21,6 +21,7 @@
     _surveyItem = surveyItem;
     _name.text = surveyItem.name;
     _value.text = surveyItem.value;
+    _value.tag = surveyItem.nTag;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

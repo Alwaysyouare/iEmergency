@@ -43,6 +43,12 @@
     _account.text = showId;
     _pwd.text = iciAccount.Pwd;
     
+    
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [_account resignFirstResponder];
+    [_pwd resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,6 +95,14 @@
     params.PuId = trueAccountId;
     params.Password = pwdText;
     params.DeviceImei = identifierForVendor;
+    
+    ICIAccount *iciAccount = [[ICIAccount alloc] init];
+    iciAccount.PuId = trueAccountId;
+    iciAccount.Pwd = pwdText;
+    [ICIAccount save:iciAccount];
+    [self performSegueWithIdentifier:@"SegueLogin" sender:sender];
+    
+    return;
     
     [ICIHttpTool post:METHORD_LOGIN params:params success:^(id responseObj) {
         [MBProgressHUD hideHUD];

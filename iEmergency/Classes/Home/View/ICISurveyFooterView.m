@@ -40,4 +40,26 @@
 }
 */
 
+/**
+ *  保存按钮
+ *
+ *  @param sender <#sender description#>
+ */
+- (IBAction)onSave:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
+        [self.delegate ICISurveyViewDidClickBtn:FooterClickSave];
+    }
+}
+
+- (IBAction)onReport:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
+        [self.delegate ICISurveyViewDidClickBtn:FooterClickReport];
+    }
+}
+
+- (IBAction)onCancel:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
+        [self.delegate ICISurveyViewDidClickBtn:FooterClickCancel];
+    }
+}
 @end
