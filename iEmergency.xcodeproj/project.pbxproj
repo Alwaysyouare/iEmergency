@@ -278,6 +278,7 @@
 		B88A4A5D1BCFF345001BD528 /* Bugtags.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5B1BCFF345001BD528 /* Bugtags.framework */; settings = {ASSET_TAGS = (); }; };
 		B88A4A5F1BCFF381001BD528 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */; };
 		B88A4A611BCFF38C001BD528 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A601BCFF38C001BD528 /* ImageIO.framework */; };
+		B8A08F061BD4E10600361002 /* ICISurveyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A08F051BD4E10600361002 /* ICISurveyTable.m */; settings = {ASSET_TAGS = (); }; };
 		B8A222D31BCF91B100FCF1E2 /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A222D11BCF8E2800FCF1E2 /* BaiduMapAPI.framework */; };
 		B8A222D51BCF91C400FCF1E2 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B8A222D41BCF91C400FCF1E2 /* mapapi.bundle */; settings = {ASSET_TAGS = (); }; };
 		B8A2D7401BCF3DF0004DA4EC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */; };
@@ -799,6 +800,8 @@
 		B88A4A5B1BCFF345001BD528 /* Bugtags.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugtags.framework; path = iEmergency/framework/CrashTrack/Bugtags.framework; sourceTree = "<group>"; };
 		B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		B88A4A601BCFF38C001BD528 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		B8A08F041BD4E10600361002 /* ICISurveyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICISurveyTable.h; sourceTree = "<group>"; };
+		B8A08F051BD4E10600361002 /* ICISurveyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICISurveyTable.m; sourceTree = "<group>"; };
 		B8A222D11BCF8E2800FCF1E2 /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = iEmergency/framework/BaiduMap/BaiduMapAPI.framework; sourceTree = "<group>"; };
 		B8A222D41BCF91C400FCF1E2 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = iEmergency/framework/BaiduMap/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 		B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -1119,6 +1122,8 @@
 				1F73FD7F1B85CBEF00B437C4 /* ICIMessageObject.m */,
 				1F5D6FA41B9430A7009FAF6A /* ICISurveyItem.h */,
 				1F5D6FA51B9430A7009FAF6A /* ICISurveyItem.m */,
+				B8A08F041BD4E10600361002 /* ICISurveyTable.h */,
+				B8A08F051BD4E10600361002 /* ICISurveyTable.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2355,6 +2360,7 @@
 				1FE9F5791B842AAE0004BDA0 /* DDFileLogger.m in Sources */,
 				1FE3215D1B65DBAC00944254 /* ICIAppDelegate.mm in Sources */,
 				1FE9F5041B842AAD0004BDA0 /* XMPPElement.m in Sources */,
+				B8A08F061BD4E10600361002 /* ICISurveyTable.m in Sources */,
 				1FB979DC1B79CC5E0034C465 /* MJRefreshNormalHeader.m in Sources */,
 				1FE9F5331B842AAE0004BDA0 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				1FE9F5551B842AAE0004BDA0 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,

@@ -11,8 +11,14 @@
 #import "ICIMoreGroup.h"
 #import "ICISurveyCell.h"
 #import "ICISurveyFooterView.h"
+#import "ICISurveyTable.h"
 
 @interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate>
+
+/**
+ *  调查表结构
+ */
+@property (nonatomic,strong) ICISurveyTable *surveyTable;
 
 /**
  *  字段列表
@@ -35,15 +41,15 @@
 {
     if (_items == nil) {
         //
-        ICISurveyItem *item00 = [[ICISurveyItem alloc] initWithName:@"位置" key:@"Geo" value:nil nTag:0];
-        ICISurveyItem *item01 = [[ICISurveyItem alloc] initWithName:@"经度" key:@"Lon" value:nil nTag:1];
-        ICISurveyItem *item02 = [[ICISurveyItem alloc] initWithName:@"纬度" key:@"Lat" value:nil nTag:2];
-        ICISurveyItem *item03 = [[ICISurveyItem alloc] initWithName:@"调查人" key:@"Reporter" value:nil nTag:3];
+        ICISurveyItem *item00 = [[ICISurveyItem alloc] initWithName:@"位置" key:@"Geo" value:nil nTag:0 nType:0];
+        ICISurveyItem *item01 = [[ICISurveyItem alloc] initWithName:@"经度" key:@"Lon" value:nil nTag:1 nType:2];
+        ICISurveyItem *item02 = [[ICISurveyItem alloc] initWithName:@"纬度" key:@"Lat" value:nil nTag:2 nType:2];
+        ICISurveyItem *item03 = [[ICISurveyItem alloc] initWithName:@"调查人" key:@"Reporter" value:nil nTag:3 nType:0];
         ICIMoreGroup *group0 = [[ICIMoreGroup alloc] init];
         group0.headerTitle = @"基本信息";
         group0.items = @[item00,item01,item02,item03];
         
-        ICISurveyItem *item10 = [[ICISurveyItem alloc] initWithName:@"具体描述" key:@"Description" value:nil nTag:4];
+        ICISurveyItem *item10 = [[ICISurveyItem alloc] initWithName:@"具体描述" key:@"Description" value:nil nTag:4 nType:0];
         ICIMoreGroup *group1 = [[ICIMoreGroup alloc] init];
         group1.headerTitle = @"信息描述";
         group1.items = @[item10];
@@ -101,9 +107,26 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+/**
+ *  文本框编辑结束事件，在该事件中获取文本的值
+ *
+ *  @param textField <#textField description#>
+ */
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
+    NSInteger nTag = textField.tag;
+    NSString *strValue = textField.text;
+    //从数组中查找是哪一个条目的文本值修改完毕
+    for (ICIMoreGroup *itemGroup in _items) {
+        for (ICISurveyItem *item in itemGroup.items) {
+            //
+            if (item.nTag == nTag) {
+                item.value = strValue;
+            }
+        }
+    }
+    
 }
 
 /**
@@ -227,6 +250,8 @@
         case FooterClickReport:
             //
             ICILog(@"点击了保存并上传按钮");
+            
+            
             break;
         case FooterClickCancel:
             //

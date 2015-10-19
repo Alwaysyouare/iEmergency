@@ -22,6 +22,21 @@
     _name.text = surveyItem.name;
     _value.text = surveyItem.value;
     _value.tag = surveyItem.nTag;
+    switch (surveyItem.nType) {
+        case 0:
+            _value.keyboardType = UIKeyboardTypeDefault;
+            break;
+        case 1:
+            _value.keyboardType = UIKeyboardTypeNumberPad;
+            break;
+        case 2:
+            _value.keyboardType = UIKeyboardTypeDecimalPad;
+            break;
+            
+        default:
+            _value.keyboardType = UIKeyboardTypeDefault;
+            break;
+    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

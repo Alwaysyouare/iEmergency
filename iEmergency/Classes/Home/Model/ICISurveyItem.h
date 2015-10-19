@@ -31,12 +31,30 @@
 @property (nonatomic,assign) NSInteger nTag;
 
 /**
- *  初始化item
- *
- *  @param name  标题名称
- *  @param value 初始化值
- *
- *  @return item
+ *  条目的类型。0：文本；1.数字；2.小数；
  */
-- (instancetype)initWithName:(NSString *)name key:(NSString *)key value:(NSString *)value nTag:(NSInteger)nTag;
+@property (nonatomic,assign) NSInteger nType;
+
+
+/**
+ *  初始化条目
+ *
+ *  @param name  标签名
+ *  @param key   条目对应的关键字
+ *  @param value 关键字对应的值
+ *  @param nTag  值控件的Tag属性值
+ *  @param nType 条目的类型.0：文本；1.数字；2.小数；
+ *
+ *  @return <#return value description#>
+ */
+- (instancetype)initWithName:(NSString *)name key:(NSString *)key value:(NSString *)value nTag:(NSInteger)nTag nType:(NSInteger)nType;
+
+/**
+ *  使用字典初始化条目
+ *
+ *  @param dict 字典
+ *
+ *  @return 条目类型
+ */
+- (instancetype)initWithDictionary:(NSDictionary *)dict;
 @end
