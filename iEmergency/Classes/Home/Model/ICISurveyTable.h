@@ -21,7 +21,7 @@
 /**
  *  调查表属性列表。每一项为属性-值的字典
  */
-@property(nonatomic,strong)NSMutableArray *attributesList;
+@property(nonatomic,strong)NSArray *attributesList;
 
 /**
  *  附件列表，每一项为ICIAttachmentItem的对象

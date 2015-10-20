@@ -7,6 +7,7 @@
 //
 
 #import "ICISimpleSurveyRecordController.h"
+#import "ICISimpleSurveyEditController.h"
 
 @interface ICISimpleSurveyRecordController ()
 
@@ -32,6 +33,14 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ToEditSurvey"]) {
+        ICISimpleSurveyEditController *editVC = segue.destinationViewController;
+        [editVC setValue:@"SimpleSurvey" forKey:@"surveyTableName"];
+    }
 }
 
 - (void)didReceiveMemoryWarning

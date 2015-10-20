@@ -16,6 +16,11 @@
 @interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate>
 
 /**
+ *  调查表名称
+ */
+@property (nonatomic,copy) NSString *surveyTableName;
+
+/**
  *  调查表结构
  */
 @property (nonatomic,strong) ICISurveyTable *surveyTable;
@@ -100,17 +105,14 @@
     footView.delegate = self;
     self.tableView.tableFooterView = footView;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    ICILog(@"%@",_surveyTableName);
 }
 
 /**
  *  文本框编辑结束事件，在该事件中获取文本的值
  *
- *  @param textField <#textField description#>
+ *  @param textField
  */
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -248,10 +250,7 @@
             ICILog(@"点击了保存按钮");
             break;
         case FooterClickReport:
-            //
-            ICILog(@"点击了保存并上传按钮");
-            
-            
+            [self reportSurveyTable];
             break;
         case FooterClickCancel:
             //
@@ -263,6 +262,26 @@
     }
 }
 
+/**
+ *  上传调查表
+ */
+- (void)reportSurveyTable
+{
+    ICISurveyTable *surveyTable = [[ICISurveyTable alloc] init];
+    surveyTable.tableName = _surveyTableName;
+    NSMutableArray *attributesList = [NSMutableArray array];
+    for (ICIMoreGroup *itemGourp in _items) {
+        for (ICISurveyItem *item in itemGourp.items) {
+            NSDictionary *itemDict = [NSDictionary dictionaryWithObjectsAndKeys:item.value,item.key, nil];
+            [attributesList addObject:itemDict];
+        }
+    }
+    
+    surveyTable.attributesList = attributesList;
+    
+    //TODO:发送网络请求进行上报
+    
+}
 
 - (void)didReceiveMemoryWarning
 {
