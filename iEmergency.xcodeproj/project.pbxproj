@@ -274,6 +274,7 @@
 		1FE9F8141B8462DE0004BDA0 /* ICINewPushMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9F8131B8462DE0004BDA0 /* ICINewPushMessage.m */; };
 		1FE9F8171B8474F40004BDA0 /* ICIBindPushServerParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9F8161B8474F40004BDA0 /* ICIBindPushServerParam.m */; };
 		1FEF3C1E1B6B13A700A9FD29 /* ICICollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF3C1D1B6B13A700A9FD29 /* ICICollectionCell.xib */; };
+		B82D22051BD693C300C89530 /* ICISurveyTableResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B82D22041BD693C200C89530 /* ICISurveyTableResponse.m */; settings = {ASSET_TAGS = (); }; };
 		B88A4A5C1BCFF345001BD528 /* Bugtags.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B88A4A5A1BCFF345001BD528 /* Bugtags.bundle */; settings = {ASSET_TAGS = (); }; };
 		B88A4A5D1BCFF345001BD528 /* Bugtags.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5B1BCFF345001BD528 /* Bugtags.framework */; settings = {ASSET_TAGS = (); }; };
 		B88A4A5F1BCFF381001BD528 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */; };
@@ -796,6 +797,8 @@
 		1FE9F8151B8474F40004BDA0 /* ICIBindPushServerParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICIBindPushServerParam.h; sourceTree = "<group>"; };
 		1FE9F8161B8474F40004BDA0 /* ICIBindPushServerParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICIBindPushServerParam.m; sourceTree = "<group>"; };
 		1FEF3C1D1B6B13A700A9FD29 /* ICICollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ICICollectionCell.xib; sourceTree = "<group>"; };
+		B82D22031BD693C200C89530 /* ICISurveyTableResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICISurveyTableResponse.h; sourceTree = "<group>"; };
+		B82D22041BD693C200C89530 /* ICISurveyTableResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICISurveyTableResponse.m; sourceTree = "<group>"; };
 		B88A4A5A1BCFF345001BD528 /* Bugtags.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Bugtags.bundle; path = iEmergency/framework/CrashTrack/Bugtags.bundle; sourceTree = "<group>"; };
 		B88A4A5B1BCFF345001BD528 /* Bugtags.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bugtags.framework; path = iEmergency/framework/CrashTrack/Bugtags.framework; sourceTree = "<group>"; };
 		B88A4A5E1BCFF381001BD528 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1124,6 +1127,8 @@
 				1F5D6FA51B9430A7009FAF6A /* ICISurveyItem.m */,
 				B8A08F041BD4E10600361002 /* ICISurveyTable.h */,
 				B8A08F051BD4E10600361002 /* ICISurveyTable.m */,
+				B82D22031BD693C200C89530 /* ICISurveyTableResponse.h */,
+				B82D22041BD693C200C89530 /* ICISurveyTableResponse.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2490,6 +2495,7 @@
 				1FC0BDCD1B6756CF006C459B /* ICIMoreController.m in Sources */,
 				1FE9F7A21B842AAE0004BDA0 /* DDXMLElement.m in Sources */,
 				1FA877DB1B7364F000A34118 /* ICIBaseReponse.m in Sources */,
+				B82D22051BD693C300C89530 /* ICISurveyTableResponse.m in Sources */,
 				1FB979D71B79CC5E0034C465 /* MJRefreshAutoStateFooter.m in Sources */,
 				1FE9F54D1B842AAE0004BDA0 /* XMPPCapabilities.xcdatamodel in Sources */,
 				1F73FD7B1B85C62A00B437C4 /* FMResultSet.m in Sources */,

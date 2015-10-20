@@ -85,7 +85,7 @@
         [MBProgressHUD showError:@"密码不能为空"];
         return;
     }
-    [MBProgressHUD showMessage:@"正在登录..."];
+    
     
     NSString * trueAccountId = PUPREFIX;
     trueAccountId = [trueAccountId stringByAppendingString:accountText];
@@ -103,7 +103,7 @@
     [self performSegueWithIdentifier:@"SegueLogin" sender:sender];
     
     return;
-    
+    [MBProgressHUD showMessage:@"正在登录..."];
     [ICIHttpTool post:METHORD_LOGIN params:params success:^(id responseObj) {
         [MBProgressHUD hideHUD];
         if ([responseObj isKindOfClass:[ICIAccount class]]) {

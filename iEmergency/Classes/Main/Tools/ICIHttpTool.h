@@ -44,4 +44,14 @@
  */
 +(void)postForCu:(NSString *)method params:(id)params success:(void(^)(id responseObj))success failure:(void(^)(NSError *error))failure;
 
+
+/**
+ *  提交调查表到服务器
+ *
+ *  @param surveyTable <#surveyTable description#>
+ *  @param success     <#success description#>
+ *  @param failure     <#failure description#>
+ */
++ (void)postSurveyTable:(id)surveyTable success:(void(^)(id responseObj))success failure:(void(^)(NSError *error))failure;
+
 @end

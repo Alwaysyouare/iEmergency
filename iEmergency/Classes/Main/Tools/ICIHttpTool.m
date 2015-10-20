@@ -12,6 +12,8 @@
 #import "MJExtension.h"
 #import "ICIAccount.h"
 #import "ICIMoreEvents.h"
+#import "ICISurveyTable.h"
+#import "ICISurveyTableResponse.h"
 
 @implementation ICIHttpTool
 
@@ -204,6 +206,63 @@
     }];
     [mgr.operationQueue addOperation:operation];
     
+}
+
+
++ (void)postSurveyTable:(id)surveyTable success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    //初始化AFN
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    //设置response处理为不处理。否则按json格式处理返回结果，会出错
+    mgr.responseSerializer = [AFHTTPResponseSerializer serializer];
+    //设置接受的类型
+    mgr.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/xml"];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL:[NSURL URLWithString:HOSTSERVERURL]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"text/xml" forHTTPHeaderField:@"Content-Type"];
+    //根据名称构造消息体
+    ICISurveyTable *surveyTableObj = (ICISurveyTable *)surveyTable;
+    NSString *strBody=@"";
+    strBody = [strBody stringByAppendingFormat:@"<Message Version='1.0' Type='%@'>",surveyTableObj.tableName];
+    
+    //模型转换成字典。然后取出所有的Key来填充Body
+    NSDictionary *paramsDict = surveyTableObj.attributesDict;
+    NSArray *paramsKeys = [paramsDict allKeys];
+    for (int i=0; i < paramsKeys.count; i++) {
+        NSString *strKey = [paramsKeys objectAtIndex:i];
+        NSString *strValue = [paramsDict objectForKey:strKey];
+        strBody = [strBody stringByAppendingFormat:@"<%@>%@</%@>",strKey,strValue,strKey];
+    }
+    strBody = [strBody stringByAppendingString:@"</Message>"];
+    
+    [request setHTTPBody:[strBody dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSOperation *operation = [mgr HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //将返回结果转化成字符串
+        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        ICILog(@"%@",result);
+        
+        //将字符串加载到XMl中
+        GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithXMLString:result options:0 error:nil];
+        GDataXMLElement *root = doc.rootElement;
+        GDataXMLElement *resultEle = [root elementsForName:@"Result"][0];
+        ICISurveyTableResponse *response = [[ICISurveyTableResponse alloc] init];
+        response.resultCode = [[resultEle attributeForName:@"Code"] stringValue];
+        response.caseId = [[root elementsForName:@"CaseId"][0] stringValue];
+        
+        success(response);
+                
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+            ICILog(@"Post for Common error:%@",error.localizedDescription);
+        }
+    }];
+    [mgr.operationQueue addOperation:operation];
+    
+
 }
 
 

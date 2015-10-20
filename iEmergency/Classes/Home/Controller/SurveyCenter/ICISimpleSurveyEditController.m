@@ -12,6 +12,9 @@
 #import "ICISurveyCell.h"
 #import "ICISurveyFooterView.h"
 #import "ICISurveyTable.h"
+#import "ICISurveyTableResponse.h"
+#import "ICIHttpTool.h"
+#import "MBProgressHUD+NJ.h"
 
 @interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate>
 
@@ -269,18 +272,42 @@
 {
     ICISurveyTable *surveyTable = [[ICISurveyTable alloc] init];
     surveyTable.tableName = _surveyTableName;
-    NSMutableArray *attributesList = [NSMutableArray array];
+    NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:5];
     for (ICIMoreGroup *itemGourp in _items) {
         for (ICISurveyItem *item in itemGourp.items) {
-            NSDictionary *itemDict = [NSDictionary dictionaryWithObjectsAndKeys:item.value,item.key, nil];
-            [attributesList addObject:itemDict];
+            if (item.value != nil) {
+                [attributesDict setObject:item.value forKey:item.key];
+            }else{
+                [attributesDict setObject:@"" forKey:item.key];
+            }
+            
         }
     }
     
-    surveyTable.attributesList = attributesList;
+    surveyTable.attributesDict = attributesDict;
     
     //TODO:发送网络请求进行上报
-    
+    [MBProgressHUD showMessage:@"正在上报调查表..."];
+    [ICIHttpTool postSurveyTable:surveyTable success:^(id responseObj) {
+        //成功
+        [MBProgressHUD hideHUD];
+        if ([responseObj isKindOfClass:[ICISurveyTableResponse class]]) {
+            ICISurveyTableResponse *response = (ICISurveyTableResponse *)responseObj;
+            if ([response.resultCode isEqualToString:@"0"]) {
+                //上报成功
+                NSString *strCaseId = response.caseId;
+                //TODO: 保存数据到数据库中
+                
+            }else{
+                [MBProgressHUD showError:@"调查表上报失败"];
+            }
+        }else{
+            [MBProgressHUD showError:@"调查表上报失败"];
+        }
+    } failure:^(NSError *error) {
+        //失败
+        [MBProgressHUD showError:@"调查表上报失败"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

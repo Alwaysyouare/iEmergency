@@ -17,7 +17,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //启动日志崩溃抓取
-    [Bugtags startWithAppKey:@"cd7d879740803e0c0d3cd5c428a52ae1" invocationEvent:BTGInvocationEventNone];
+//    [Bugtags startWithAppKey:@"cd7d879740803e0c0d3cd5c428a52ae1" invocationEvent:BTGInvocationEventNone];
     //启动百度地图
     _mapManager = [[BMKMapManager alloc] init];
     BOOL ret = [_mapManager start:@"VMZ4wjwmiaL3Uf2lvWRSijFq" generalDelegate:self];

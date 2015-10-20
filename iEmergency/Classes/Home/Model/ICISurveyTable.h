@@ -19,9 +19,9 @@
 @property(nonatomic,copy)NSString *tableName;
 
 /**
- *  调查表属性列表。每一项为属性-值的字典
+ *  调查表属性字典
  */
-@property(nonatomic,strong)NSArray *attributesList;
+@property(nonatomic,strong)NSDictionary *attributesDict;
 
 /**
  *  附件列表，每一项为ICIAttachmentItem的对象
