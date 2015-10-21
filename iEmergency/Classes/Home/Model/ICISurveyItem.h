@@ -31,7 +31,7 @@
 @property (nonatomic,assign) NSInteger nTag;
 
 /**
- *  条目的类型。0：文本；1.数字；2.小数；
+ *  条目的类型。0：文本；1.数字；2.小数；3.位置
  */
 @property (nonatomic,assign) NSInteger nType;
 

@@ -18,6 +18,9 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7X-dp-awZ">
                     <rect key="frame" x="258" y="9" width="39" height="22"/>
                     <state key="normal" title="添加"/>
+                    <connections>
+                        <action selector="onAddAttach:" destination="TT2-kq-7ep" eventType="touchUpInside" id="cxQ-NW-t0o"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1K-Tz-GVp">
                     <rect key="frame" x="10" y="48" width="60" height="30"/>
@@ -69,6 +72,7 @@
                 <outlet property="btnCancel" destination="0hR-zF-sni" id="RQv-Oc-Ade"/>
                 <outlet property="btnReport" destination="gDw-sm-j1C" id="581-Tl-5kG"/>
                 <outlet property="btnSave" destination="H1K-Tz-GVp" id="b62-l9-9Yk"/>
+                <outlet property="labelAttachCount" destination="HkQ-2T-H4F" id="4cg-ql-uU6"/>
             </connections>
         </view>
     </objects>

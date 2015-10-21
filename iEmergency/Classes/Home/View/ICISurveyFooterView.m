@@ -47,19 +47,25 @@
  */
 - (IBAction)onSave:(id)sender {
     if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
-        [self.delegate ICISurveyViewDidClickBtn:FooterClickSave];
+        [self.delegate ICISurveyViewDidClickBtn:ICISurveyFooterClickSave];
     }
 }
 
 - (IBAction)onReport:(id)sender {
     if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
-        [self.delegate ICISurveyViewDidClickBtn:FooterClickReport];
+        [self.delegate ICISurveyViewDidClickBtn:ICISurveyFooterClickReport];
     }
 }
 
 - (IBAction)onCancel:(id)sender {
     if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
-        [self.delegate ICISurveyViewDidClickBtn:FooterClickCancel];
+        [self.delegate ICISurveyViewDidClickBtn:ICISurveyFooterClickCancel];
+    }
+}
+
+- (IBAction)onAddAttach:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ICISurveyViewDidClickBtn:)]) {
+        [self.delegate ICISurveyViewDidClickBtn:ICISurveyFooterClickAddAttach];
     }
 }
 @end

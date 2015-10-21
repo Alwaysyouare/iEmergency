@@ -16,7 +16,7 @@
 #import "ICIHttpTool.h"
 #import "MBProgressHUD+NJ.h"
 
-@interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate>
+@interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate,ICISurveyCellDelegate>
 
 /**
  *  调查表名称
@@ -173,6 +173,7 @@
                                ];
         ICISurveyGroup *group = self.items[indexPath.section];
         cell.surveyItem = group.items[indexPath.row];
+        cell.delegate = self;
         cell.value.delegate = self;
         return cell;
     }else{
@@ -236,17 +237,19 @@
 }
 */
 
-- (void)ICISurveyViewDidClickBtn:(ICISurveyFooterClickType)btnType
+- (void)ICISurveyViewDidClickBtn:(ICISurveyFooterClick)btnType
 {
     switch (btnType) {
-        case FooterClickSave:
-            //
+        case ICISurveyFooterClickAddAttach:
+            [self addSurveyAttachment];
+            break;
+        case ICISurveyFooterClickSave:
             ICILog(@"点击了保存按钮");
             break;
-        case FooterClickReport:
+        case ICISurveyFooterClickReport:
             [self reportSurveyTable];
             break;
-        case FooterClickCancel:
+        case ICISurveyFooterClickCancel:
             //
             [self.navigationController popViewControllerAnimated:YES];
             break;
@@ -254,6 +257,14 @@
         default:
             break;
     }
+}
+
+/**
+ *  增加附件操作
+ */
+- (void)addSurveyAttachment
+{
+    ICILog(@"添加附件");
 }
 
 /**
@@ -299,6 +310,14 @@
         //失败
         [MBProgressHUD showError:@"调查表上报失败"];
     }];
+}
+
+/**
+ *  点击了Cell的按钮
+ */
+- (void)ICISurveyCellClick
+{
+    ICILog(@"选择位置");
 }
 
 - (void)didReceiveMemoryWarning

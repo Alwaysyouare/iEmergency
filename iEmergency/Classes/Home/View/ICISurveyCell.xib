@@ -16,20 +16,28 @@
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQ0-mK-LWK">
                         <rect key="frame" x="20" y="11" width="80" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5or-V8-zPT">
-                        <rect key="frame" x="100" y="7" width="200" height="30"/>
+                        <rect key="frame" x="100" y="7" width="185" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCa-UC-cZY">
+                        <rect key="frame" x="293" y="10" width="22" height="22"/>
+                        <connections>
+                            <action selector="onLocation:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ryr-E7-41d"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="location" destination="ZCa-UC-cZY" id="SZh-3H-r2X"/>
                 <outlet property="name" destination="UQ0-mK-LWK" id="FRf-UW-XwA"/>
                 <outlet property="value" destination="5or-V8-zPT" id="DIt-rP-yQl"/>
             </connections>
+            <point key="canvasLocation" x="201" y="226"/>
         </tableViewCell>
     </objects>
 </document>

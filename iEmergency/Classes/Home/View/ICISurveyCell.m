@@ -22,6 +22,7 @@
     _name.text = surveyItem.name;
     _value.text = surveyItem.value;
     _value.tag = surveyItem.nTag;
+    _location.hidden = YES;
     switch (surveyItem.nType) {
         case 0:
             _value.keyboardType = UIKeyboardTypeDefault;
@@ -32,7 +33,10 @@
         case 2:
             _value.keyboardType = UIKeyboardTypeDecimalPad;
             break;
-            
+        case 3:
+            _value.keyboardType = UIKeyboardTypeDefault;
+            _location.hidden = NO;
+            break;
         default:
             _value.keyboardType = UIKeyboardTypeDefault;
             break;
@@ -45,4 +49,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onLocation:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(ICISurveyCellClick)]) {
+        [self.delegate ICISurveyCellClick];
+    }
+}
 @end

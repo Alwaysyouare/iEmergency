@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-typedef NS_ENUM(NSInteger,ICISurveyFooterClickType)
+typedef NS_ENUM(NSInteger,ICISurveyFooterClick)
 {
-    FooterClickCancel,
-    FooterClickSave,
-    FooterClickReport
+    ICISurveyFooterClickAddAttach,
+    ICISurveyFooterClickCancel,
+    ICISurveyFooterClickSave,
+    ICISurveyFooterClickReport
 };
 
 /**
@@ -23,7 +24,7 @@ typedef NS_ENUM(NSInteger,ICISurveyFooterClickType)
 
 @optional
 
-- (void)ICISurveyViewDidClickBtn:(ICISurveyFooterClickType)btnType;
+- (void)ICISurveyViewDidClickBtn:(ICISurveyFooterClick)btnType;
 
 @end
 
@@ -35,10 +36,12 @@ typedef NS_ENUM(NSInteger,ICISurveyFooterClickType)
 @property (weak, nonatomic) IBOutlet UIButton *btnSave;
 @property (weak, nonatomic) IBOutlet UIButton *btnReport;
 @property (weak, nonatomic) IBOutlet UIButton *btnCancel;
+@property (weak, nonatomic) IBOutlet UILabel *labelAttachCount;
 
 @property (weak, nonatomic) id<ICISurveyFooterViewDelegate> delegate;
 - (IBAction)onSave:(id)sender;
 - (IBAction)onReport:(id)sender;
 - (IBAction)onCancel:(id)sender;
+- (IBAction)onAddAttach:(id)sender;
 
 @end
