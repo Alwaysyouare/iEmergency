@@ -56,5 +56,14 @@
  *
  *  @return 条目类型
  */
-- (instancetype)initWithDictionary:(NSDictionary *)dict;
+- (instancetype)initWithDict:(NSDictionary *)dict;
+
+/**
+ *  使用字典初始化对象
+ *
+ *  @param dict <#dict description#>
+ *
+ *  @return <#return value description#>
+ */
++ (instancetype)itemWithDict:(NSDictionary *)dict;
 @end

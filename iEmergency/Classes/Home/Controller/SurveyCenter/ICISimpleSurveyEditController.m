@@ -8,7 +8,7 @@
 
 #import "ICISimpleSurveyEditController.h"
 #import "ICISurveyItem.h"
-#import "ICIMoreGroup.h"
+#import "ICISurveyGroup.h"
 #import "ICISurveyCell.h"
 #import "ICISurveyFooterView.h"
 #import "ICISurveyTable.h"
@@ -31,7 +31,7 @@
 /**
  *  字段列表
  */
-@property (nonatomic, strong) NSMutableArray *items;
+@property (nonatomic, strong) NSArray *items;
 /**
  *  附件列表
  */
@@ -45,30 +45,21 @@
  *
  *  @return item数组
  */
-- (NSMutableArray *)items
+- (NSArray *)items
 {
     if (_items == nil) {
-        //
-        ICISurveyItem *item00 = [[ICISurveyItem alloc] initWithName:@"位置" key:@"Geo" value:nil nTag:0 nType:0];
-        ICISurveyItem *item01 = [[ICISurveyItem alloc] initWithName:@"经度" key:@"Lon" value:nil nTag:1 nType:2];
-        ICISurveyItem *item02 = [[ICISurveyItem alloc] initWithName:@"纬度" key:@"Lat" value:nil nTag:2 nType:2];
-        ICISurveyItem *item03 = [[ICISurveyItem alloc] initWithName:@"调查人" key:@"Reporter" value:nil nTag:3 nType:0];
-        ICIMoreGroup *group0 = [[ICIMoreGroup alloc] init];
-        group0.headerTitle = @"基本信息";
-        group0.items = @[item00,item01,item02,item03];
         
-        ICISurveyItem *item10 = [[ICISurveyItem alloc] initWithName:@"具体描述" key:@"Description" value:nil nTag:4 nType:0];
-        ICIMoreGroup *group1 = [[ICIMoreGroup alloc] init];
-        group1.headerTitle = @"信息描述";
-        group1.items = @[item10];
-        
-        ICIMoreGroup *group2 = [[ICIMoreGroup alloc] init];
-        group2.headerTitle = @"现场图像";
+        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"simpleSurvey" ofType:@"plist"];
+        NSArray *dictArray = [NSArray arrayWithContentsOfFile:plistPath];
         
         _items = [NSMutableArray array];
-        [_items addObject:group0];
-        [_items addObject:group1];
-        [_items addObject:group2];
+        NSMutableArray *itemsArray = [NSMutableArray arrayWithCapacity:dictArray.count];
+        for (NSDictionary *dict in dictArray) {
+            ICISurveyGroup *group = [ICISurveyGroup groupWithDict:dict];
+            [itemsArray addObject:group];
+        }
+        _items = itemsArray;
+        
     }
     return _items;
 }
@@ -123,7 +114,7 @@
     NSInteger nTag = textField.tag;
     NSString *strValue = textField.text;
     //从数组中查找是哪一个条目的文本值修改完毕
-    for (ICIMoreGroup *itemGroup in _items) {
+    for (ICISurveyGroup *itemGroup in _items) {
         for (ICISurveyItem *item in itemGroup.items) {
             //
             if (item.nTag == nTag) {
@@ -180,7 +171,7 @@
     if (section == 0 || section == 1) {
         ICISurveyCell *cell = [tableView dequeueReusableCellWithIdentifier:SurveyBasicCellID
                                ];
-        ICIMoreGroup *group = self.items[indexPath.section];
+        ICISurveyGroup *group = self.items[indexPath.section];
         cell.surveyItem = group.items[indexPath.row];
         cell.value.delegate = self;
         return cell;
@@ -191,7 +182,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    ICIMoreGroup *group = self.items[section];
+    ICISurveyGroup *group = self.items[section];
     return  group.headerTitle;
 }
 
@@ -273,7 +264,7 @@
     ICISurveyTable *surveyTable = [[ICISurveyTable alloc] init];
     surveyTable.tableName = _surveyTableName;
     NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:5];
-    for (ICIMoreGroup *itemGourp in _items) {
+    for (ICISurveyGroup *itemGourp in _items) {
         for (ICISurveyItem *item in itemGourp.items) {
             if (item.value != nil) {
                 [attributesDict setObject:item.value forKey:item.key];

@@ -285,6 +285,8 @@
 		B8A2D7401BCF3DF0004DA4EC /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */; };
 		B8A2D7421BCF3E15004DA4EC /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A2D7411BCF3E15004DA4EC /* libresolv.tbd */; };
 		B8A2D7461BCF3E3C004DA4EC /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A2D7451BCF3E3C004DA4EC /* libxml2.2.tbd */; };
+		B8F60B351BD7322A0071E65F /* simpleSurvey.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8F60B341BD7322A0071E65F /* simpleSurvey.plist */; settings = {ASSET_TAGS = (); }; };
+		B8F60B381BD73A9A0071E65F /* ICISurveyGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F60B371BD73A9A0071E65F /* ICISurveyGroup.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -810,6 +812,9 @@
 		B8A2D73F1BCF3DF0004DA4EC /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		B8A2D7411BCF3E15004DA4EC /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		B8A2D7451BCF3E3C004DA4EC /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		B8F60B341BD7322A0071E65F /* simpleSurvey.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = simpleSurvey.plist; sourceTree = "<group>"; };
+		B8F60B361BD73A9A0071E65F /* ICISurveyGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICISurveyGroup.h; sourceTree = "<group>"; };
+		B8F60B371BD73A9A0071E65F /* ICISurveyGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICISurveyGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1129,6 +1134,8 @@
 				B8A08F051BD4E10600361002 /* ICISurveyTable.m */,
 				B82D22031BD693C200C89530 /* ICISurveyTableResponse.h */,
 				B82D22041BD693C200C89530 /* ICISurveyTableResponse.m */,
+				B8F60B361BD73A9A0071E65F /* ICISurveyGroup.h */,
+				B8F60B371BD73A9A0071E65F /* ICISurveyGroup.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1461,6 +1468,7 @@
 		1FE321531B65DBAC00944254 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B8F60B331BD731DC0071E65F /* surveyTable */,
 				1F06C76E1B6A21CB004BAA78 /* help */,
 				1FE321541B65DBAC00944254 /* iEmergency-Info.plist */,
 				1FE321551B65DBAC00944254 /* InfoPlist.strings */,
@@ -2187,6 +2195,14 @@
 			path = libidn;
 			sourceTree = "<group>";
 		};
+		B8F60B331BD731DC0071E65F /* surveyTable */ = {
+			isa = PBXGroup;
+			children = (
+				B8F60B341BD7322A0071E65F /* simpleSurvey.plist */,
+			);
+			name = surveyTable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2302,6 +2318,7 @@
 				1F5D6FAD1BA8006B009FAF6A /* ICISurveyFooter.xib in Resources */,
 				1F06C7991B6A21CB004BAA78 /* image017.png in Resources */,
 				1FB979E71B79E5050034C465 /* ICIEventCell.xib in Resources */,
+				B8F60B351BD7322A0071E65F /* simpleSurvey.plist in Resources */,
 				1F06C78A1B6A21CB004BAA78 /* image003.jpg in Resources */,
 				1F06C78E1B6A21CB004BAA78 /* image007.jpg in Resources */,
 				1F06C78C1B6A21CB004BAA78 /* image005.jpg in Resources */,
@@ -2352,6 +2369,7 @@
 				1FE9F5181B842AAD0004BDA0 /* XMPPUserCoreDataStorageObject.m in Sources */,
 				1FE9F5191B842AAD0004BDA0 /* XMPPResourceMemoryStorageObject.m in Sources */,
 				1F6E054C1B81AE5300BD9F26 /* ICIAboutViewController.m in Sources */,
+				B8F60B381BD73A9A0071E65F /* ICISurveyGroup.m in Sources */,
 				1FE9F5151B842AAD0004BDA0 /* XMPPResourceCoreDataStorageObject.m in Sources */,
 				1FE9F5651B842AAE0004BDA0 /* NSXMLElement+XEP_0203.m in Sources */,
 				1FE9F5701B842AAE0004BDA0 /* GCDMulticastDelegate.m in Sources */,

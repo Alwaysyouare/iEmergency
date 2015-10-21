@@ -7,7 +7,7 @@
 //
 
 #import "ICISurveyItem.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
 
 @implementation ICISurveyItem
 
@@ -31,9 +31,19 @@
  *
  *  @return <#return value description#>
  */
-- (instancetype) initWithDictionary:(NSDictionary *)dict
+- (instancetype) initWithDict:(NSDictionary *)dict
 {
-    return [ICISurveyItem objectWithKeyValues:dict];
+    //return [ICISurveyItem objectWithKeyValues:dict];
+    if (self =[super init]) {
+        [self setValuesForKeysWithDictionary:dict];
+    }
+    return self;
+}
+
+
++ (instancetype) itemWithDict:(NSDictionary *)dict
+{
+    return [[self alloc] initWithDict:dict];
 }
 
 @end
