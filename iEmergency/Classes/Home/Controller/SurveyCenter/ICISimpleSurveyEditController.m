@@ -16,7 +16,8 @@
 #import "ICIHttpTool.h"
 #import "MBProgressHUD+NJ.h"
 
-@interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate,ICISurveyCellDelegate>
+@interface ICISimpleSurveyEditController ()<ICISurveyFooterViewDelegate,UITextFieldDelegate,
+        ICISurveyCellDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 /**
  *  调查表名称
@@ -265,8 +266,82 @@
 - (void)addSurveyAttachment
 {
     ICILog(@"添加附件");
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"现场图像"
+                                                                   message:@"选择现场图像"
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction* takePhotoAction = [UIAlertAction actionWithTitle:@"拍摄" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self openCamera];
+                                                          }];
+    
+    [alert addAction:takePhotoAction];
+    UIAlertAction* imageAction = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self openAlbum];
+                                                          }];
+    [alert addAction:imageAction];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+                                                        handler:^(UIAlertAction * action) {
+                                                            
+                                                        }];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
+/**
+ *  进行拍摄
+ */
+- (void)openCamera
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        return;
+    }
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+/**
+ *  打开相册
+ */
+- (void)openAlbum
+{
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        return;
+    }
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+}
+
+/**
+ *  图片选择结束
+ *
+ *  @param picker <#picker description#>
+ *  @param info   <#info description#>
+ */
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    //取出图片
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    //TODO: 处理图片进行显示
+}
+
+/**
+ *  取消选择
+ *
+ *  @param picker
+ */
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
 /**
  *  上传调查表
  */
